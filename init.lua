@@ -703,6 +703,51 @@ do
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
 
+    gopls = {
+      analyses = {
+        unusedparams = true, -- Warn on unused function parameters
+        unusedvariable = true, -- Warn on unused variables
+        unusedwrite = true, -- Warn on unused writes to variables
+        useany = true, -- Warn on use of `interface{}` instead of `any`
+        shadow = true, -- Warn on shadowed variables
+        nilness = true, -- Check for nil dereferences
+        fieldalignment = false, -- Suggest reordering struct fields (noisy, opt-in)
+      },
+      -- Formatting
+      gofumpt = true, -- Use gofumpt (stricter gofmt)
+    
+      -- Static analysis
+      staticcheck = true, -- Enable staticcheck linting rules
+    
+      -- Hints (inlay hints, shown inline in editor)
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    
+      -- Completion
+      completeUnimported = true, -- Auto-complete unimported packages
+      usePlaceholders = true, -- Add placeholders for func params in completions
+    
+      -- Navigation
+      directoryFilters = { -- Hide certain dirs from workspace
+        '-.git',
+        '-.jj',
+        '-.vscode',
+        '-.idea',
+        '-node_modules',
+        '-.nvim',
+      },
+    
+      -- Semantic tokens (better syntax highlighting)
+      semanticTokens = true,
+    },
+
     stylua = {}, -- Used to format Lua code
 
     -- Special Lua Config, as recommended by neovim help docs
